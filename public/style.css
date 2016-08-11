@@ -1,0 +1,27 @@
+.square-wrapper {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  margin: 0;
+  vertical-align:top;
+}
+
+.square {
+  height: 100%;
+  width: 100%;
+}
+
+.black-square {
+  background-color: black;
+  color: white;
+}
+
+.knight {
+  font-size: 5em;
+}
+
+.board {
+  width: 800px;
+  height: 800px;
+  border: 1px solid black;
+}
