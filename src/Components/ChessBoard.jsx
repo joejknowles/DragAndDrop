@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import Knight from './Knight.jsx';
-import Square from './Square.jsx';
-import { canMoveKnight, moveKnight } from '../state/Game.jsx'
+import BoardSquare from './BoardSquare.jsx';
+import { canMoveKnight, moveKnight } from '../state/Game.jsx';
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend';
 
-
-export default class ChessBoard extends Component {
+class ChessBoard extends Component {
   static propTypes = {
     knightPosition: PropTypes.arrayOf(
       PropTypes.number.isRequired
@@ -24,21 +25,20 @@ export default class ChessBoard extends Component {
   renderSquare(i) {
     const x = i % 8;
     const y = Math.floor(i / 8);
-    const isBlack = (x + y) % 2 === 1;
-
-    const [knightX, knightY] = this.props.knightPosition;
-
-    const piece = (x === knightX && y === knightY) ?
-      <Knight /> : null;
-
     return (
       <div key={i} className="square-wrapper"
         onClick={() => this.handleSquareClick(x, y)}>
-        <Square isBlack={isBlack}>
-          { piece }
-        </Square>
+        <BoardSquare x={x} y={y}>
+          { this.renderPiece(x, y) }
+        </BoardSquare>
       </div>
     );
+  }
+
+  renderPiece(x, y) {
+    const [knightX, knightY] = this.props.knightPosition;
+    return (x === knightX && y === knightY) ?
+          <Knight /> : null;
   }
 
   handleSquareClick(toX, toY) {
@@ -47,3 +47,4 @@ export default class ChessBoard extends Component {
     }
   }
 }
+export default DragDropContext(HTML5Backend)(ChessBoard);
