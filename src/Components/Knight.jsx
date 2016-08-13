@@ -19,8 +19,7 @@ function collect(connect, monitor) {
 class Knight extends Component {
   render() {
     const { connectDragSource, connectDragPreview, isDragging } = this.props;
-    connectDragSource(<div>AAAARRRGHHHH</div>);
-    return connectDragPreview(
+    return connectDragSource(
       <div style={{opacity: isDragging ? 0.5 : 1,
         backgroundColor: isDragging ? 'transparent' : 'inherit' }} className="knight">♘</div>
     );
