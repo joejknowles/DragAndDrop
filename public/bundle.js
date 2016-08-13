@@ -29472,7 +29472,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var knightPosition = [1, 7];
+	var knightPosition = [1, 0];
 	var observer = null;
 
 	function emitChange() {

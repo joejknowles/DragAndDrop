@@ -1,4 +1,4 @@
-let knightPosition = [1, 7];
+let knightPosition = [1, 0];
 let observer = null;
 
 function emitChange() {
