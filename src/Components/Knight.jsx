@@ -11,17 +11,15 @@ const knightSource = {
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
   };
 }
 
 class Knight extends Component {
   render() {
-    const { connectDragSource, connectDragPreview, isDragging } = this.props;
+    const { connectDragSource, isDragging } = this.props;
     return connectDragSource(
-      <div style={{opacity: isDragging ? 0.5 : 1,
-        backgroundColor: isDragging ? 'transparent' : 'inherit' }} className="knight">♘</div>
+      <div style={{ opacity: isDragging ? 0.5 : 1 }} className="knight">♘</div>
     );
   };
 }
